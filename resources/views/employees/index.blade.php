@@ -7,17 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    @foreach ($positions as $position )
-        <p>
-            {{str_repeat("____|",$position->depth)}} 
-            <strong>{{ $position->name}}</strong>
-        </p>
+   
         
-        @foreach ($position->employees as $employee )
+        @foreach ($employees as $employee )
 
-        <p>{{str_repeat("____|",$position->depth)}}{{$employee->name." ".$employee->surname."  BOSS: ".@$employee->boss->name."  ".@$employee->boss->surname}}</p>
+        {{str_repeat("____|",$employee->position->depth)}}
+        {{$employee->name." ".$employee->surname."  BOSS: ".@$employee->boss->name."  ".@$employee->boss->surname}}</p>
         @endforeach
 
-    @endforeach
 </body>
 </html>

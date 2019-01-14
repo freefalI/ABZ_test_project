@@ -15,6 +15,6 @@ $factory->define(App\Employee::class, function (Faker $faker) {
         'position_id' =>NULL,
         'hire_date'=>$faker->date($format = 'Y-m-d',$max='2010-01-01'),
         'salary'=>$faker->randomFloat($nbMaxDecimals = NULL,$min = 1000, $max = 10000),
-        'supervisor_id' => NULL,
+        'parent_id' => NULL,
     ];
 });

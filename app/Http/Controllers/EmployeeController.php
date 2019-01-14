@@ -15,11 +15,21 @@ class EmployeeController extends Controller
      */
     public function index()
     {
+        // $positions = Position::withDepth()->get();
+        // $data = Employee::countErrors();
+        // dd($data);
+        // $employees=Employee::all();
+        $employees = Employee::defaultOrder()->get();//all();
+        // $employees = Employee:: get()->toTree();
+       
+        return view('employees.index', compact( 'employees'));
+    }
+    public function index2()
+    {
         $positions = Position::withDepth()->get();
         // $employees = Employee::all();
-        return view('employees.index', compact( 'positions'));
+        return view('employees.index2', compact( 'positions'));
     }
-
     /**
      * Show the form for creating a new resource.
      *

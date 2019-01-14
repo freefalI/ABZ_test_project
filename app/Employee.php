@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    // use NodeTrait;
+    use NodeTrait;
 
     public function position()
     {
@@ -16,7 +16,7 @@ class Employee extends Model
     }
     public function boss()
     {
-        return $this->belongsTo(Employee::class, 'supervisor_id');
+        return $this->belongsTo(Employee::class, 'parent_id');
     }
 
 }

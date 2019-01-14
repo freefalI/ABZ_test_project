@@ -36,7 +36,7 @@ class EmployeesTableSeeder extends Seeder
                 $previousEmployeeID=  Employee::where('position_id',$position->parent_id)->first()->id;
             }
 
-            $employee->supervisor_id=$previousEmployeeID;
+            $employee->parent_id=$previousEmployeeID;
 
             $employee->save();
         }
@@ -59,8 +59,7 @@ class EmployeesTableSeeder extends Seeder
 
                 $id=$position->parent_id;
                 $parentEmployees=Employee::where('position_id',$id)->get();
-                $employee->supervisor_id=$faker->randomElement($parentEmployees)->id;
-            
+                $employee->parent_id=$faker->randomElement($parentEmployees)->id;            
                 $employee->save();
             }
         }

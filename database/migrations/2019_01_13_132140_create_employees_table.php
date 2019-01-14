@@ -20,14 +20,13 @@ class CreateEmployeesTable extends Migration
             $table->unsignedInteger('position_id');
             $table->date('hire_date');
             $table->double('salary',8,2);
-            $table->unsignedInteger('supervisor_id');
             
             
             $table->increments('id');
             $table->timestamps();
 
             $table->foreign('position_id')->references('id')->on('positions');
-            // $table->foreign('supervisor_id')->references('id')->on('employees');
+            $table->nestedSet();
 
         });
     }

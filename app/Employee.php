@@ -19,4 +19,10 @@ class Employee extends Model
         return $this->belongsTo(Employee::class, 'parent_id');
     }
 
+    public function childrenWithPositions()
+    {
+        return $this->hasMany(get_class($this), $this->getParentIdName())
+            ->setModel($this)->with('position');
+    }
+
 }

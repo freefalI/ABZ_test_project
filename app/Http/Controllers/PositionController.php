@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Position;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 
 class PositionController extends Controller
 {
@@ -14,10 +15,22 @@ class PositionController extends Controller
      */
     public function index()
     {
-        $positions=Position::withDepth()->get();
+        $positions = new Collection();
+        $root = Position::find(1);
+        $positions->push($root);
+        $positions=$positions->merge($root->children);
+        // dd($positions);
         return view('positions.index', compact('positions'));
-    }
+    }    
 
+
+    public function children($position_id)
+    {
+        $position = Position::find($position_id);
+
+        // print_r($position_id);
+        return json_encode($position->children);
+    }
 
     /**
      * Show the form for creating a new resource.

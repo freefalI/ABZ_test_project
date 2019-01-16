@@ -28,6 +28,7 @@
       <th>@sortablelink('boss.name','supervisor')</th>
     </tr>
   </thead>
+
   <!-- <tfoot>
     <tr>
       <th><abbr title="Id">Id</abbr></th>
@@ -40,6 +41,7 @@
       <th><abbr title="Goals against">Supervisor</abbr></th>
     </tr>
   </tfoot> -->
+
   <tbody>
         @foreach ($employees as $key=> $employee )
     <tr>
@@ -57,6 +59,7 @@
 </table>
 
         {{ $employees->appends(\Request::except('page'))->links('vendor.pagination.bulma') }}.
+
 
 </body>
 </html>

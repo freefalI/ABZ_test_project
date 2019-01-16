@@ -45,7 +45,7 @@ class EmployeeController extends Controller
 
     public function table()
     {
-        $employees = Employee::with('position','boss')->paginate(20);
+        $employees = Employee::with('position','boss')->sortable()->paginate(20);
         // $employee = Employee::with('position')->find($employee_id);
 
         return view('employees.table',compact('employees'));

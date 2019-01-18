@@ -46,25 +46,18 @@ class EmployeeController extends Controller
 
     public function table(Request $request)
     {   
-        // dump($request->all());
-        if(count($request->all())){
+      
+        if($request['search_field'] || $request['search_text']){
 
-            $validator = Validator::make($request->all(), [
+            $validator = $request->validate([
                 'search_field' => 'required',
                 'search_text' => 'required',
             ]);
-        
-            if ($validator->fails()) {
-                return redirect('employees/table');
-            }
 
-            // dump(1);
-            $employees = Employee::where($request['search_field'],'like','%'.$request['search_text'].'%')->paginate(20);// ('position','boss')->sortable()->paginate(20);
-        
+            $tableName= request('sort')=='boss.name'? 'parent_employees' : 'employees';
+            $employees = Employee::with('position','boss')->where("$tableName.".$request['search_field'],'like','%'.$request['search_text'].'%')->sortable()->paginate(20);// ('position','boss')->sortable()->paginate(20);
         }
         else{
-
-            //  dump(2);
             $employees = Employee::with('position','boss')->sortable()->paginate(20);
         }
         

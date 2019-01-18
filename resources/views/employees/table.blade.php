@@ -1,18 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/1.css">
-    <script src="js/app.js"></script>
+@extends('layouts.app')
 
-    <script src="js/2.js"></script>
-</head>
-<body>
+@section('content')
+  
+
+
+<!-- search panel -->
+<nav class="level">
+      <!-- Left side -->
+      <div class="level-left">
+        <div class="level-item">
+          <p class="subtitle is-5" id='tasks-count'>
+            <strong></strong> tasks
+          </p>
+        </div>
+        <div class="level-item">
+          <div class="field has-addons">
+            <p class="control">
+              <input class="input" id='search-tasks-input' type="text" placeholder="Find a task">
+            </p>
+            <!-- <p class="control">
+              <button class="button">
+                Search
+              </button>
+            </p> -->
+          </div>
+        </div>
+      </div>
+    
+      <!-- Right side -->
+    <div id='search-tabs' class="level-right tabs is-toggle">
+        <ul>
+            <li class="is-active" data-id='2'><a>All</a></li>
+            <li data-id='1'><a>Completed</a></li>
+            <li data-id='0'><a>Uncompleted</a></li>
+        </ul>
+       
+    </div>
+
+
+    </nav>
+
 
 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
   <thead>
@@ -61,5 +88,15 @@
         {{ $employees->appends(\Request::except('page'))->links('vendor.pagination.bulma') }}.
 
 
-</body>
-</html>
+@endsection
+
+@section('page_specific_styles')
+<link rel="stylesheet" href="{{asset('css/my_styles.css')}}">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+@endsection
+
+@section('page_specific_scripts')
+
+@endsection
+

@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
+  
+        
     @foreach ($positions as $position )
         <p>
             {{str_repeat("____|",$position->depth)}} 
@@ -21,5 +17,14 @@
         @endforeach
 
     @endforeach
-</body>
-</html>
+
+
+@endsection
+
+@section('page_specific_styles')
+
+@endsection
+
+@section('page_specific_scripts')
+
+@endsection

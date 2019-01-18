@@ -1,27 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@extends('layouts.app')
 
-    <script src="js/app.js"></script>
-    <script src="js/1.js"></script>
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/1.css">
-    <style>
-
-    </style>
-</head>
-<body>
-    
-</div>
-
-
-
-
+@section('content')
+<div>
 
     @foreach ($positions as $key=>$position )
         <!-- <p>   -->
@@ -41,5 +21,15 @@
     @endforeach
     </div>
 
-</body>
-</html> 
+@endsection
+
+@section('page_specific_styles')
+
+    <link rel="stylesheet" href="{{asset('css/my_styles.css')}}">
+
+@endsection
+
+@section('page_specific_scripts')
+    <script src="{{asset('js/1.js')}}"></script>
+
+@endsection

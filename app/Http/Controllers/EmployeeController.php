@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Employee;
 use App\Position;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Collection;
 
 class EmployeeController extends Controller
@@ -43,12 +44,32 @@ class EmployeeController extends Controller
         return json_encode($employee->childrenWithPositions);
     }
 
-    public function table()
-    {
-        $employees = Employee::with('position','boss')->sortable()->paginate(20);
-        // $employee = Employee::with('position')->find($employee_id);
+    public function table(Request $request)
+    {   
+        // dump($request->all());
+        if(count($request->all())){
 
+            $validator = Validator::make($request->all(), [
+                'search_field' => 'required',
+                'search_text' => 'required',
+            ]);
+        
+            if ($validator->fails()) {
+                return redirect('employees/table');
+            }
+
+            // dump(1);
+            $employees = Employee::where($request['search_field'],'like','%'.$request['search_text'].'%')->paginate(20);// ('position','boss')->sortable()->paginate(20);
+        
+        }
+        else{
+
+            //  dump(2);
+            $employees = Employee::with('position','boss')->sortable()->paginate(20);
+        }
+        
         return view('employees.table',compact('employees'));
+
     }
 
     public function index2()
@@ -57,6 +78,7 @@ class EmployeeController extends Controller
         // $employees = Employee::all();
         return view('employees.index2', compact( 'positions'));
     }
+
     /**
      * Show the form for creating a new resource.
      *

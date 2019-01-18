@@ -8,21 +8,42 @@
 <nav class="level">
       <!-- Left side -->
       <div class="level-left">
-        <div class="level-item">
+        <!-- <div class="level-item">
           <p class="subtitle is-5" id='tasks-count'>
-            <strong></strong> tasks
+            <strong></strong> Search
           </p>
-        </div>
+        </div> -->
         <div class="level-item">
           <div class="field has-addons">
+          <form action="/employees/table" method=get>
+          <div class="field is-grouped">
             <p class="control">
-              <input class="input" id='search-tasks-input' type="text" placeholder="Find a task">
+              <input name='search_text' class="input" id='search-tasks-input' type="text" placeholder="" value="{{request('search_text')}}">
             </p>
-            <!-- <p class="control">
-              <button class="button">
+            <p class="control">
+              <div class="select">
+                <select name="search_field">
+                  <option selected   disabled >Select field</option>
+                  <option {{request('search_field')=='id' ? 'selected':''}}>id</option>
+                  <option {{request('search_field')=='name' ? 'selected':''}}>name</option>
+                  <option {{request('search_field')=='surname' ? 'selected':''}}>surname</option>
+                  <option {{request('search_field')=='patronymic' ? 'selected':''}}>patronymic</option>
+                  <option {{request('search_field')=='hire_date' ? 'selected':''}}>hire_date</option>
+                  <option {{request('search_field')=='salary' ? 'selected':''}}>salary</option>
+
+
+
+                </select>
+              </div>
+                
+            </p>
+            <p class="control">
+              <button type='submit' class="button">
                 Search
               </button>
-            </p> -->
+            </p>
+            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -98,5 +119,6 @@
 
 @section('page_specific_scripts')
 
+<script src="{{asset('js/table.js')}}"></script>
 @endsection
 

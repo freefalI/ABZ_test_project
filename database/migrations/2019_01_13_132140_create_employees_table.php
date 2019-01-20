@@ -14,6 +14,8 @@ class CreateEmployeesTable extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
+            $table->engine = 'MyIsam';
+
             $table->string('name',100);
             $table->string('surname',100);
             $table->string('patronymic',100);

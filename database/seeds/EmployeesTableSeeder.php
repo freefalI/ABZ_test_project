@@ -48,7 +48,9 @@ class EmployeesTableSeeder extends Seeder
 
         $positions =Position::where('is_only',false)->get();
 
-        $NUMBER_OF_EMPLOYEES = 20;
+        // NUMBER_OF_EMPLOYEES *  (number of not only positions( ~11))
+        // f. e. if $NUMBER_OF_EMPLOYEES = 10, table will have 10*11 records
+        $NUMBER_OF_EMPLOYEES = 500;
         $faker = Faker\Factory::create();
 
         foreach ($positions as $key => $position) {

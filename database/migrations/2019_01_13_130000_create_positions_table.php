@@ -27,6 +27,8 @@ class CreatePositionsTable extends Migration
         // });
 
         Schema::create('positions', function (Blueprint $table) {
+            $table->engine = 'MyIsam';
+
             $table->increments('id');
             $table->string('name',100);
             $table->boolean('is_only');//if there can be only one employee in this poosition

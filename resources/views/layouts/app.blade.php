@@ -45,10 +45,7 @@
       <a class="navbar-item" href='/employees/table'>
         Employees/table
       </a>
-      <a class="navbar-item" href='/employees2'><button class=' button is-danger'>
-        Employees2
-        </button>
-      </a>
+
      
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">

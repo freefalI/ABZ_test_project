@@ -57,7 +57,7 @@ $(()=>{
                             <p class='collapsible' data-id=${position.id} data-depth=${depth + 1}>
                             ${data[i].name}
                             </p>
-                            <div class='content' hidden>
+                            <div class='children' hidden>
                             </div>
                             `);
                         }

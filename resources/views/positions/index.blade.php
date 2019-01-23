@@ -13,9 +13,9 @@
             }}
            </p>
             @if($key==0)
-                <div class='content' >
+                <div class='children' >
             @endif
-            <div class='content' hidden>
+            <div class='children' hidden>
                 </div>
             <!-- </p> -->
     @endforeach

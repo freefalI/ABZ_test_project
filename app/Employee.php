@@ -18,13 +18,10 @@ class Employee extends Model
         'salary',
         'hire_date',
         'positiion',
-        // 'created_at',
-        // 'updated_at'
     ];
     public function position()
     {
         return $this->belongsTo(Position::class)->withDepth();
-        // return $this->belongsTo(Position::class)->withDepth();
     }
     public function boss()
     {

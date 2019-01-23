@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Collection;
 
-class EmployeeController extends Controller
+class EmployeesTableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,28 +17,16 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        // $positions = Position::withDepth()->get();
-        // $data = Employee::countErrors();
-        // dd($data);
-        // $employees=Employee::all();
-
-
         $employees = new Collection();
         $root = Employee::find(1);
         $employees->push($root);
         $employees=$employees->merge($root->children);
-        // dd($employees);
-
-
-        // $employees = Employee::defaultOrder()->get();//all();
-        // $employees = Employee:: get()->toTree();
-       
+     
         return view('employees.index', compact( 'employees'));
     }
 
     public function children($employee_id)
     {
-        // $employee = Employee::find($employee_id);
         $employee = Employee::with('position')->find($employee_id);
 
         return json_encode($employee->childrenWithPositions);
@@ -46,7 +34,6 @@ class EmployeeController extends Controller
 
     public function table(Request $request)
     {   
-      
         if($request['search_field'] || $request['search_text']){
 
             $validator = $request->validate([
@@ -65,12 +52,6 @@ class EmployeeController extends Controller
 
     }
 
-    public function index2()
-    {
-        $positions = Position::withDepth()->get();
-        // $employees = Employee::all();
-        return view('employees.index2', compact( 'positions'));
-    }
 
     /**
      * Show the form for creating a new resource.

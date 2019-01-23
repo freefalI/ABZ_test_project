@@ -3,7 +3,7 @@
 @section('content')
   
 
-
+<br>
 <!-- search panel -->
 <nav class="level">
       <!-- Left side -->
@@ -48,15 +48,7 @@
         </div>
       </div>
     
-      <!-- Right side -->
-    <div id='search-tabs' class="level-right tabs is-toggle">
-        <ul>
-            <li class="is-active" data-id='2'><a>All</a></li>
-            <li data-id='1'><a>Completed</a></li>
-            <li data-id='0'><a>Uncompleted</a></li>
-        </ul>
-       
-    </div>
+
 
 
     </nav>

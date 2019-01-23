@@ -19,7 +19,6 @@ class PositionController extends Controller
         $root = Position::find(1);
         $positions->push($root);
         $positions=$positions->merge($root->children);
-        // dd($positions);
         return view('positions.index', compact('positions'));
     }    
 
@@ -28,7 +27,6 @@ class PositionController extends Controller
     {
         $position = Position::find($position_id);
 
-        // print_r($position_id);
         return json_encode($position->children);
     }
 
